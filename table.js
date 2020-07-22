@@ -1,5 +1,4 @@
-let first;
-fetch('./MOCK_DATA_2.json')
+fetch('./SMALL_DATA.json')
   .then(response => response.json())
   .then(data => {
     if(data.length > 50) {
@@ -42,7 +41,6 @@ fetch('./MOCK_DATA_2.json')
                 tr.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.price}</td><td>${item.quantity}</td>`;
                 table.appendChild(tr);
             })
-            console.log(currentPage);
             if(currentPage == 0) {
                 back.style.opacity = '0.5';
                 back.style.pointerEvents = 'none'
@@ -59,8 +57,6 @@ fetch('./MOCK_DATA_2.json')
             }
 
             
-            console.log(currentPage);
-
         }
 
         back.addEventListener('click', () => {
@@ -68,24 +64,42 @@ fetch('./MOCK_DATA_2.json')
                 currentPage--;
                 showTablePage(currentPage);
             }
-            console.log('back on ' + currentPage);
         })
         forward.addEventListener('click', () => {
             if(currentPage < dataSets.length - 1) {
                 currentPage++;
                 showTablePage(currentPage);
             }
-            console.log('forward on ' + currentPage);
         })
 
 
-        // if(localStorage.getItem('page')) {
-        //     showTablePage(localStorage.getItem('page'));
-        // } else {
-        //     showTablePage(0);
-        // }
+        if(localStorage.getItem('page')) {
+            showTablePage(localStorage.getItem('page'));
+        } else {
+            showTablePage(0);
+        }
 
-        showTablePage(0);
 
+    } else {
+        let pagination = document.getElementById('pagination');
+        pagination.style.display = 'none';
+        let table = document.getElementById('table');
+        function showTablePage() {
+            table.innerHTML = `
+            <caption contenteditable>Table 1</caption>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quanity</th>
+            </tr>
+            `;
+            data.forEach(item => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.price}</td><td>${item.quantity}</td>`;
+                table.appendChild(tr);
+            })
+        }
+        showTablePage()
     }
   });
