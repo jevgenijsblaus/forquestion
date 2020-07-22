@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: grid;
+            min-height: 100vh;
+            justify-items: center;
+        }
+        table, td {
+            border: 1px solid black;
+        }
+        th {
+            border-bottom :1px solid black;
+        }
+        #pagination {
+            display: flex;
+        }
+        #pagination div {
+            padding: 7px;
+            background: blue;
+            margin: 0 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id='pagination'>
+        <div id="back"><</div>
+        <div id="forward">></div>
+    </div>
+    <table id='table'>
+
+    </table>
+    <script src="table.js"></script>
+</body>
+</html>
