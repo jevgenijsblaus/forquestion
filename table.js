@@ -1,4 +1,4 @@
-fetch('./SMALL_DATA.json')
+fetch('./BIG_DATA.json')
   .then(response => response.json())
   .then(data => {
     if(data.length > 50) {
